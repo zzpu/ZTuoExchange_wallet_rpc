@@ -1,4 +1,16 @@
-# wallet-rpc
+## 本项目为ZTuo数字资产交易平台钱包RPC端，仅供学习交流。
+
+- ## [English](README-EN.md)
+---
+# 捐赠:
+#### 您的捐赠是我们开源最大的动力
+- BTC/USDT(比特币/USDT)：1Dwwqhw9pV9iSSQwuJc8nAygda7XfahaoW
+- ETH/USDT(以太坊/USDT)：0x4f1ea0f10aa99f608f31f70b4d3119f6928693ed
+- LTC(莱特币)：LXr4TMtDhCSpdAo98vg2sbvX3UXDVPQvMa
+
+## 加入我们
+    为方便大家交流和学习，请各位小伙伴加入QQ交流群：
+	*区块链交易所技术知识交流群【QQ群：735446452】
 
 #### 项目介绍
 支持各个币种的RPC,RPC的部署及测试都需要有相关钱包节点的支撑
