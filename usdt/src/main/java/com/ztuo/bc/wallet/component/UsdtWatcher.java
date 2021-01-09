@@ -22,6 +22,7 @@ public class UsdtWatcher extends Watcher{
     private AccountService accountService;
     private String usdtPropertyId = "31";
 
+    @Override
     public  List<Deposit> replayBlock(Long startBlockNumber, Long endBlockNumber) {
         List<Deposit> deposits = new ArrayList<>();
         try {
@@ -29,7 +30,9 @@ public class UsdtWatcher extends Watcher{
                 List<String> list = jsonrpcClient.omniListBlockTransactions(blockHeight);
                 for (String txid : list) {
                     Map<String,Object> map = jsonrpcClient.omniGetTransactions(txid);
-                    if(map.get("propertyid") == null)continue;
+                    if(map.get("propertyid") == null) {
+                        continue;
+                    }
                     String propertyid = map.get("propertyid").toString();
                     String txId = map.get("txid").toString();
                     String address = String.valueOf(map.get("referenceaddress"));

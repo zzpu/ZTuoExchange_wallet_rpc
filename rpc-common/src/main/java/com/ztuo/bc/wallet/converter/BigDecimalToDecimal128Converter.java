@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 @WritingConverter
 public class BigDecimalToDecimal128Converter implements Converter<BigDecimal, Decimal128> {
 
+    @Override
     public Decimal128 convert(BigDecimal bigDecimal) {
         return new Decimal128(bigDecimal);
     }

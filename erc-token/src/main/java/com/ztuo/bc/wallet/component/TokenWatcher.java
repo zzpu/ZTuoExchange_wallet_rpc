@@ -42,7 +42,8 @@ public class TokenWatcher extends Watcher{
     @Autowired
     private DepositEvent depositEvent;
 
-    public List<Deposit> replayBlock(Long startBlockNumber,Long endBlockNumber){
+    @Override
+    public List<Deposit> replayBlock(Long startBlockNumber, Long endBlockNumber){
         List<Deposit> deposits = new ArrayList<>();
         for(Long blockHeight = startBlockNumber;blockHeight<=endBlockNumber;blockHeight++) {
             EthBlock block = null;

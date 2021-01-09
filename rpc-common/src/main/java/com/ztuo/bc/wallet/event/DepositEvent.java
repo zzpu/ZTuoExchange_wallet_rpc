@@ -15,7 +15,7 @@ public class DepositEvent {
     private Logger logger = LoggerFactory.getLogger(DepositEvent.class);
     @Autowired
     private DepositService depositService;
-    @Autowired
+    @Autowired(required = false)
     private KafkaTemplate<String,String> kafkaTemplate;
     @Value("${coin.name}")
     private String coinName;

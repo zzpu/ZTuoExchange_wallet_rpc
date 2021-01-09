@@ -13,10 +13,10 @@ import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
+import org.springframework.data.mongodb.core.convert.CustomConversions;
 import org.springframework.data.mongodb.core.convert.DefaultDbRefResolver;
 import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
 import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
-import org.springframework.data.mongodb.core.convert.CustomConversions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,17 +37,13 @@ public class MongodbConfig extends AbstractMongoConfiguration {
         return  this.getMongoClientURI().getDatabase();
     }
 
-    @Override
-    public Mongo mongo() throws Exception {
-        MongoClient mongoClient = new MongoClient(this.getMongoClientURI());
-        return mongoClient;
-    }
 
     @Bean
     public MongoDbFactory dbFactory() throws Exception {
-        return new SimpleMongoDbFactory(this.mongo(),this.getDatabaseName());
+        return new SimpleMongoDbFactory(this.mongoClient(), this.getDatabaseName());
     }
 
+    @Override
     @Bean
     public MongoMappingContext mongoMappingContext() {
         MongoMappingContext mappingContext = new MongoMappingContext();
@@ -69,5 +65,11 @@ public class MongodbConfig extends AbstractMongoConfiguration {
     @Bean
     public MongoTemplate mongoTemplate(MongoDbFactory dbFactory,MappingMongoConverter converter) throws Exception {
         return new MongoTemplate(dbFactory, converter);
+    }
+
+    @Override
+    public MongoClient mongoClient() {
+        MongoClient mongoClient = new MongoClient(this.getMongoClientURI());
+        return mongoClient;
     }
 }
